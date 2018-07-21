@@ -1,24 +1,34 @@
 # Flask Foundation
-[![Build Status](https://travis-ci.org/JackStouffer/Flask-Foundation.png)](https://travis-ci.org/JackStouffer/Flask-Foundation)
 
-There is a cookiecutter version of this repo at [https://github.com/JackStouffer/cookiecutter-Flask-Foundation](https://github.com/JackStouffer/cookiecutter-Flask-Foundation).
+## Dependencies
+- Python 3+
+- Flask 1.0+
+- all `packages` in `requirements.txt`
 
-Documentation is located at [https://jackstouffer.com/flask-foundation/](https://jackstouffer.com/flask-foundation/)
+## Quick Start
 
-Flask Foundation is a solid foundation for flask applications, built with best practices, that you can easily construct your website/webapp off of. Flask Foundation is different from most Flask frameworks as it does not assume anything about your development or production environments. Flask Foundation is platform agnostic in this respect.
+### 复制并修改配置文件
+1. `cp .env.example .env`
+2. 修改config.py中的数据库账号密码
 
-Built off of the [bootstrapy project](https://github.com/kirang89/bootstrapy)
+### Mysql
+1. 安装mysql服务端和客户端
+2. 打开mysql服务
 
-Best practices were learned from:
+### 安装依赖
+```bash
+pip install -U -r requirement.txt
+```
 
-* [Creating Websites With Flask](http://maximebf.com/blog/2012/10/building-websites-in-python-with-flask/)
-* [Getting Bigger With Flask](http://maximebf.com/blog/2012/11/getting-bigger-with-flask/)
-* [Larger Applications With Flask](http://flask.pocoo.org/docs/patterns/packages/).
-
-## License
-
-Flask-Foundation is licensed under the BSD license. For more info see LICENSE.md
-
-# Want to learn more about Flask?
-
-I also wrote a book on Flask! You can order it [here](https://www.packtpub.com/web-development/mastering-flask).
+### 运行单元测试
+```bash
+py.test tests 
+```
+出现如下字样，表明测试通过
+```text
+==================== 7 passed, 21 warnings in 1.88 seconds ====================
+```
+### 运行Server
+```bash
+flask run
+```
