@@ -5,4 +5,5 @@ Flask-Login
 Flask-SQLAlchemy
 sqlalchemy_utils
 pytest
+pymysql
 python-dotenv
