@@ -1,4 +1,5 @@
 # Flask Foundation
+Based on https://github.com/JackStouffer/Flask-Foundation. Compatible with Flask 1.0
 
 ## Dependencies
 - Python 3+
