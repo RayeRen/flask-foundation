@@ -3,7 +3,8 @@ Flask-Caching
 Flask-DebugToolbar
 Flask-Login
 Flask-SQLAlchemy
+Flask-Migrate
 sqlalchemy_utils
 pytest
-mysql-connector
+MySQL-connector-python
 python-dotenv
