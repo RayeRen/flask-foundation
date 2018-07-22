@@ -1,0 +1,33 @@
+upstream dev {
+    server 127.0.0.1:8000;
+}
+
+server {
+        listen 80;
+        server_name  foo.bar.com;
+        return 301 https://foo.bar.com$request_uri;
+}
+
+server {
+        listen 443 ssl;
+        ssl on;
+        ssl_certificate /path/to_crt;
+        ssl_certificate_key /path/to_key;
+
+        server_name  foo.bar.com;
+        charset     utf-8;
+
+        add_header Strict-Transport-Security max-age=63072000;
+        add_header X-Content-Type-Options nosniff;
+
+        client_max_body_size 75M;   # adjust to taste
+
+#        location /uploads/ {
+#                root /root/dev/qsy_backend/;
+#        }
+
+        location / {
+            include  uwsgi_params;
+            uwsgi_pass dev;
+        }
+}

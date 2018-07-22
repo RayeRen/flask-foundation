@@ -7,7 +7,7 @@ Based on https://github.com/JackStouffer/Flask-Foundation. Compatible with Flask
 - mysql
 - all `packages` in `requirements.txt`
 
-## Quick Start
+## Quick Start Development
 
 ### Configure the .env file
 1. `cp .env.example .env`
@@ -41,18 +41,40 @@ flask run
 ```
 
 ### Migrate Database Schema
-1. Run `flask db migrate`
-2. Run `flask db upgrade`
+```bash
+flask db migrate
+flask db upgrade
+```
 
-### Run Prod Server
+## Run Prod Server
 1. Switch the config to `Prod` mode in `.env`
-2. Run `flask db init`
-3. Run `flask run`
+2. 
+```bash
+flask db init
+flask run
+```
 
-### Deploy with Nginx and Uwsgi
+## Deploy with Nginx and Uwsgi
 
-1. `apt install nginx`
-2. `conda install -c conda-forge uwsgi libiconv`
-3. `echo net.core.somaxconn= 4000 >  /etc/sysctl.conf && sysctl -p`
-4. `uwsgi --ini uwsgi.ini`
+### Intall Nginx and Uwsgi
+```bash
+apt install nginx
+conda install -c conda-forge uwsgi libiconv
+```
 
+### Increase Max Listening Connections
+```bash
+echo net.core.somaxconn= 4000 >  /etc/sysctl.conf && sysctl -p
+```
+
+### Configure Nginx
+```bash
+cp nginx/nginx.conf.example nginx/nginx.conf
+vi nginx.conf # modify the config file
+ln -s $PWD/nginx/nginx.conf.example /etc/nginx/conf.d/MY_APP.conf
+```
+
+### Start UWsgi
+```bash
+uwsgi --ini uwsgi.ini
+```
