@@ -67,14 +67,17 @@ conda install -c conda-forge uwsgi libiconv
 echo net.core.somaxconn= 4000 >  /etc/sysctl.conf && sysctl -p
 ```
 
-### Configure Nginx
+### Configure
 ```bash
 cp nginx/nginx.conf.example nginx/nginx.conf
 vi nginx.conf # modify the config file
 ln -s $PWD/nginx/nginx.conf.example /etc/nginx/conf.d/MY_APP.conf
+
+cp uwsgi.ini.example uwsgi.ini
+vi uwsgi.ini # modify the config file
 ```
 
-### Start UWsgi
+### Start UWSGI
 ```bash
 uwsgi --ini uwsgi.ini
 ```

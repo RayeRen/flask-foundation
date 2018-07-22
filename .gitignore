@@ -150,4 +150,7 @@ venv.bak/
 .idea
 .pytest_cache
 migrations
+
+# config
 nginx/nginx.conf
+uwsgi.ini
