@@ -10,7 +10,7 @@ services:
 
 variables:
   # Configure mysql environment variables (https://hub.docker.com/r/_/mysql/)
-  MYSQL_DATABASE: qsy_test
+  MYSQL_DATABASE: flask_foundation_test
   MYSQL_ROOT_PASSWORD: root
 
 # This folder is cached between builds

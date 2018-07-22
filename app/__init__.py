@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists, create_database
 
 from app.commands import configure_commands
-from app.models import db
+from app.models import db, migrate
 from app.controllers.main import main
 from app.extensions import (
     cache,
@@ -39,6 +39,7 @@ def create_app(object_name):
 
     # SQLAlchemy
     db.init_app(app)
+    migrate.init_app(app, db)
     engine = create_engine(app.config.get('SQLALCHEMY_DATABASE_URI'))
     if not database_exists(engine.url):
         create_database(engine.url)

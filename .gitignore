@@ -149,3 +149,4 @@ venv.bak/
 
 .idea
 .pytest_cache
+migrations

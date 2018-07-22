@@ -9,9 +9,9 @@ Based on https://github.com/JackStouffer/Flask-Foundation. Compatible with Flask
 
 ## Quick Start
 
-### 复制并修改配置文件
+### Configure the .env file
 1. `cp .env.example .env`
-2. Modify `config.py`
+2. Modify `.env`
 
 ### Mysql Service
 1. Install mysql server and client
@@ -32,14 +32,22 @@ You will see the following summary after all tests finished.
 ```
 ### Create Dev Database
 ```bash
-flask createdb
+flask db init
 ```
 
-### Run Server
+### Run Dev Server
 ```bash
 flask run
 ```
 
+### Migrate Database Schema
+1. Run `flask db migrate`
+2. Run `flask db upgrade`
+
 ### Run Prod Server
 1. Switch the config to `Prod` mode in `.env`
-2. Run `flask run`
+2. Run `flask db init`
+3. Run `flask run`
+
+### Nginx Config
+ 
