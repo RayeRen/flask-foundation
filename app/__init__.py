@@ -1,5 +1,5 @@
 #! ../env/bin/python
-
+import os
 from flask import Flask
 from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists, create_database
@@ -14,7 +14,7 @@ from app.extensions import (
 )
 
 
-def create_app(object_name):
+def create_app():
     """
     An flask application factory, as explained here:
     http://flask.pocoo.org/docs/patterns/appfactories/
@@ -23,10 +23,17 @@ def create_app(object_name):
         object_name: the python path of the config object,
                      e.g. app.settings.ProdConfig
     """
+    env = os.getenv('FLASK_ENV')
+    if env == 'development':
+        env = 'Dev'
+    elif env == 'production':
+        env = 'Prod'
+    else:
+        env = 'Test'
 
     app = Flask(__name__)
 
-    app.config.from_object(object_name)
+    app.config.from_object("app.settings.%sConfig" % env)
 
     # commands
     configure_commands(app)

@@ -7,7 +7,7 @@ from app.models import db, User
 
 @pytest.fixture()
 def testapp(request):
-    app = create_app('app.settings.TestConfig')
+    app = create_app()
     client = app.test_client()
 
     db.app = app
