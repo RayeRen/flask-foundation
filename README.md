@@ -52,7 +52,7 @@ flask run
 ### Deploy with Nginx and Uwsgi
 
 1. `apt install nginx`
-2. `pip install uwsgi`
-2. `echo net.core.somaxconn= 4000 >  /etc/sysctl.conf && sysctl -p`
-3. `uwsgi --ini uwsgi.ini`
+2. `conda install -c conda-forge uwsgi libiconv`
+3. `echo net.core.somaxconn= 4000 >  /etc/sysctl.conf && sysctl -p`
+4. `uwsgi --ini uwsgi.ini`
 
