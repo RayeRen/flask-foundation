@@ -1,10 +1,11 @@
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(dotenv_path='.env', verbose=True)
 DB_HOST = os.getenv("DB_HOST")
 DB_USER = os.getenv("DB_USER")
 DB_PASS = os.getenv("DB_PASS")
+DB_NAME = os.getenv("DB_NAME")
 DB_URI_BASE = 'mysql+pymysql://' + DB_USER + ':' + DB_PASS + '@' + DB_HOST + '/'
 
 
@@ -15,7 +16,7 @@ class Config(object):
 class ProdConfig(Config):
     ENV = 'prod'
     CACHE_TYPE = 'simple'
-    SQLALCHEMY_DATABASE_URI = DB_URI_BASE + "qsy_prod"
+    SQLALCHEMY_DATABASE_URI = DB_URI_BASE + DB_NAME + "_prod?charset=utf8mb4"
 
 
 class DevConfig(Config):
@@ -24,7 +25,7 @@ class DevConfig(Config):
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     CACHE_TYPE = 'null'
     ASSETS_DEBUG = True
-    SQLALCHEMY_DATABASE_URI = DB_URI_BASE + "qsy_dev"
+    SQLALCHEMY_DATABASE_URI = DB_URI_BASE + DB_NAME + "_dev?charset=utf8mb4"
 
 
 class TestConfig(Config):
@@ -34,4 +35,4 @@ class TestConfig(Config):
     SQLALCHEMY_ECHO = True
     CACHE_TYPE = 'null'
     WTF_CSRF_ENABLED = False
-    SQLALCHEMY_DATABASE_URI = DB_URI_BASE + "qsy_test"
+    SQLALCHEMY_DATABASE_URI = DB_URI_BASE + DB_NAME + "_test?charset=utf8mb4"

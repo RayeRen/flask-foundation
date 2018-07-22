@@ -4,32 +4,42 @@ Based on https://github.com/JackStouffer/Flask-Foundation. Compatible with Flask
 ## Dependencies
 - Python 3+
 - Flask 1.0+
+- mysql
 - all `packages` in `requirements.txt`
 
 ## Quick Start
 
 ### 复制并修改配置文件
 1. `cp .env.example .env`
-2. 修改config.py中的数据库账号密码
+2. Modify `config.py`
 
-### Mysql
-1. 安装mysql服务端和客户端
-2. 打开mysql服务
+### Mysql Service
+1. Install mysql server and client
+2. Enable the mysql service
 
-### 安装依赖
+### Install Dependencies
 ```bash
 pip install -U -r requirement.txt
 ```
 
-### 运行单元测试
+### Run Unittests
 ```bash
 py.test tests 
 ```
-出现如下字样，表明测试通过
+You will see the following summary after all tests finished.
 ```text
 ==================== 7 passed, 21 warnings in 1.88 seconds ====================
 ```
-### 运行Server
+### Create Dev Database
+```bash
+flask createdb
+```
+
+### Run Server
 ```bash
 flask run
 ```
+
+### Run Prod Server
+1. Switch the config to `Prod` mode in `.env`
+2. Run `flask run`

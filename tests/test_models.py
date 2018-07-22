@@ -17,7 +17,15 @@ class TestModels:
         db.session.add(admin)
         db.session.commit()
 
+        # test chinese
+        admin = User('管理员', 'supersafepassword')
+        db.session.add(admin)
+        db.session.commit()
+
         user = User.query.filter_by(username="admin").first()
+        assert user is not None
+
+        user = User.query.filter_by(username="管理员").first()
         assert user is not None
 
     def test_user_password(self, testapp):
