@@ -12,19 +12,23 @@ variables:
   # Configure mysql environment variables (https://hub.docker.com/r/_/mysql/)
   MYSQL_DATABASE: flask_foundation_test
   MYSQL_ROOT_PASSWORD: root
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache"
 
 # This folder is cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
 cache:
   paths:
-  - ~/pip-cache
+  - .cache/
+  - venv/
 
 # This is a basic example for a gem or script which doesn't use
 # services such as redis or postgres
 before_script:
   # Print out python version for debugging
   - python -V
-  - export PIP_CACHE_DIR="~/pip-cache"
+  - pip install virtualenv
+  - virtualenv venv
+  - source venv/bin/activate
   - pip install -U -r requirements.txt
   - cp .env.example .env
 
