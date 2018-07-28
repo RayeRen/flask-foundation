@@ -33,6 +33,8 @@ You will see the following summary after all tests finished.
 ### Create Dev Database
 ```bash
 flask db init
+flask db migrate
+flask db upgrade
 ```
 
 ### Run Dev Server
