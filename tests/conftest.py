@@ -1,5 +1,4 @@
 import pytest
-from dotenv import load_dotenv
 
 from app import create_app
 from app.models import db, User
