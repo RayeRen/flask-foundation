@@ -5,6 +5,7 @@ from sqlalchemy import create_engine
 from sqlalchemy_utils import database_exists, create_database
 
 from app.commands import configure_commands
+from app.controllers import configure_global_interceptor
 from app.models import db, migrate
 from app.controllers.main import main
 from app.extensions import (
@@ -54,6 +55,7 @@ def create_app():
     # login
     login_manager.init_app(app)
 
+    configure_global_interceptor(app)
     # register blueprints
     app.register_blueprint(main)
 
