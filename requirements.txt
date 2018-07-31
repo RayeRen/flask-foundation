@@ -6,5 +6,5 @@ Flask-SQLAlchemy
 Flask-Migrate
 sqlalchemy_utils
 pytest
-MySQL-connector-python
 python-dotenv
+pymysql
